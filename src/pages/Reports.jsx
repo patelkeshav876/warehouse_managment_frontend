@@ -1,7 +1,7 @@
 import React from 'react';  
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import axios from '../api';
 import { Line, Bar, Doughnut } from 'react-chartjs-2';
 import Papa from 'papaparse';
 import * as XLSX from 'xlsx';
@@ -157,9 +157,9 @@ const Reports = () => {
       const headers = { Authorization: `Bearer ${token}` };
 
       const [dashboardRes, timeSeriesRes, productRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/analytics/dashboard', { headers }),
-        axios.get(`http://localhost:5000/api/analytics/timeseries?period=${period}`, { headers }),
-        axios.get('http://localhost:5000/api/analytics/products', { headers })
+        axios.get('/api/analytics/dashboard', { headers }),
+        axios.get(`/api/analytics/timeseries?period=${period}`, { headers }),
+        axios.get('/api/analytics/products', { headers })
       ]);
 
       setDashboardStats(dashboardRes.data);

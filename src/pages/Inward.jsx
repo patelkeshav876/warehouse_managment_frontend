@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import axios from '../api';
 import * as XLSX from 'xlsx';
 
 import { MotionDiv, FloatBlob, AnimatedButton } from "./motion-utils";
@@ -30,7 +30,7 @@ const Inward = () => {
   const fetchTransactions = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/transactions?type=inward', {
+      const response = await axios.get('/api/transactions?type=inward', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTransactions(response.data);
@@ -43,7 +43,7 @@ const Inward = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/transactions', {
+      await axios.post('/api/transactions', {
         ...formData,
         type: 'inward'
       }, {
@@ -122,7 +122,7 @@ const Inward = () => {
 
       // Send all data in bulk
       const promises = transformedData.map(data =>
-        axios.post('http://localhost:5000/api/transactions', data, {
+        axios.post('/api/transactions', data, {
           headers: { Authorization: `Bearer ${token}` }
         })
       );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import axios from 'axios';
+import axios from '../api';
 
 const Outward = () => {
   const [transactions, setTransactions] = useState([]);
@@ -31,7 +31,7 @@ const Outward = () => {
   const fetchTransactions = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/transactions?type=outward', {
+      const response = await axios.get('/api/transactions?type=outward', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTransactions(response.data);
@@ -44,7 +44,7 @@ const Outward = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/transactions', {
+      await axios.post('/api/transactions', {
         ...formData,
         type: 'outward'
       }, {
@@ -80,7 +80,7 @@ const Outward = () => {
   const updateStatus = async (id, updates) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/transactions/${id}`, updates, {
+      await axios.put(`/api/transactions/${id}`, updates, {
         headers: { Authorization: `Bearer ${token}` }
       });
       fetchTransactions();

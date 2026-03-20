@@ -1,7 +1,7 @@
 import React from 'react'; 
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api';
 import Nav from '../components/Nav';
 
 const AdminDashboard = () => {
@@ -21,7 +21,7 @@ const AdminDashboard = () => {
   const fetchDashboardData = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/api/dashboard/stats', {
+      const response = await axios.get('/api/dashboard/stats', {
         headers: { Authorization: `Bearer ${token}` }
       });
       setStats(response.data);

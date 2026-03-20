@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import axios from '../api';
 import NET from 'vanta/dist/vanta.net.min';
 import * as THREE from 'three';
 
@@ -52,7 +52,7 @@ const Register = () => {
     setError('');
 
     try {
-      await axios.post('http://localhost:5000/api/auth/register', formData);
+      await axios.post('/api/auth/register', formData);
       alert('Registration successful! Please login.');
       navigate('/login');
     } catch (err) {
