@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 import * as XLSX from 'xlsx';
-import InwardEntryScanner from '../InwardEntryScanner';
+
 import { MotionDiv, FloatBlob, AnimatedButton } from "./motion-utils";
 
 const Inward = () => {
