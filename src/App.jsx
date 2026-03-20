@@ -17,10 +17,8 @@ import Items from './pages/Items';
 import Vendors from './pages/Vendors';
 import VendorsNew from "./pages/VendorsNew";
 import OrganizationSetup from './pages/OrganizationSetup';
-import InwardEntryScanner from './InwardEntryScanner';
 import ThemeEditor from './components/ThemeEditor';
 import UserAccountPanel from "./components/UserAccountPanel";
-
 import WelcomeDashboard from "./pages/WelcomeDashboard";
 
 
